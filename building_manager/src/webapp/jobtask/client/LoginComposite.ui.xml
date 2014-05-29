@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder' xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+	<ui:style>
+		.panel {
+			background-color: ivory;
+		}
+	</ui:style>
+
+	<g:FlowPanel styleName="{style.panel}">
+		<g:DecoratorPanel>
+			<g:VerticalPanel>
+				<g:Label text="Username"/>
+				<g:TextBox/>
+				<g:Label text="Password"/>
+				<g:PasswordTextBox width="157"/>
+				<g:LayoutPanel width="167px" height="59px">
+					<g:layer left="14px" width="63px" top="16px" height="30px">
+						<g:Button>Sign Up</g:Button>
+					</g:layer>
+					<g:layer left="83px" width="73px" top="16px" height="30px">
+						<g:Button>Log In</g:Button>
+					</g:layer>
+				</g:LayoutPanel>
+			</g:VerticalPanel>
+		</g:DecoratorPanel>
+	</g:FlowPanel>
+</ui:UiBinder>

@@ -6,12 +6,12 @@ import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 /**
- * The client side stub for the RPC service.
+ * The client side for the RPC service.
  */
 @RemoteServiceRelativePath("login")
 public interface LoginService extends RemoteService {
 	/**
-	 * Ques db and returns User bean depending on username matching.
+	 * Ques db and returns User entity depending on username matching.
 	 */
 	User logInUser (User user);
 	

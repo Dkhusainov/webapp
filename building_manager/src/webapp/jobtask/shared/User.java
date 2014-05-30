@@ -2,26 +2,45 @@ package webapp.jobtask.shared;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Type;
+
 
 /**
- * User bean for RPC
+ * User entity.
  *
  */
+@Entity
+@Table(name = "app_user")
 public class User implements Serializable {
-	private static final long serialVersionUID = 1L;
-	
-	private boolean blocked;
+	private static final long serialVersionUID = 4964312034368502080L;
+
+	@Id
+	@Column(name = "NAME")
 	private String name;
+	
+	@Column(name = "PASSWORD")
 	private String password;
 	
-	public boolean isBlocked() {
-		return blocked;
+	@Column(name = "BLOCKED")
+	@Type(type="true_false")
+	private boolean blocked;
+	
+	
+
+	public String getName() {
+		return name;
 	}
 	
-	public void setBlocked(boolean blocked) {
-		this.blocked = blocked;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
+
 	public String getPassword() {
 		return password;
 	}
@@ -30,12 +49,15 @@ public class User implements Serializable {
 		this.password = password;
 	}
 	
-	public String getName() {
-		return name;
+
+	public boolean isBlocked() {
+		return blocked;
 	}
 	
-	public User(String name) {
-		super();
-		this.name = name;
+	public void setBlocked(boolean blocked) {
+		this.blocked = blocked;
 	}
+	
+
+
 }

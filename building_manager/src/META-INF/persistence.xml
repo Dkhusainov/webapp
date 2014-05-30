@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
-        http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd" version="1.0">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+	version="1.0">
 
-    <persistence-unit name="transactions-optional">
-        <provider>org.datanucleus.api.jpa.PersistenceProviderImpl</provider>
-        <properties>
-            <property name="datanucleus.NontransactionalRead" value="true"/>
-            <property name="datanucleus.NontransactionalWrite" value="true"/>
-            <property name="datanucleus.ConnectionURL" value="appengine"/>
-        </properties>
-    </persistence-unit>
+	<persistence-unit name="item-manager-pu"
+		transaction-type="RESOURCE_LOCAL">
+		<class>webapp.jobtask.shared.User</class>
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect" />
+			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="current_session_context_class" value="thread" />
+			
+			<!-- database property -->
+			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:XE" />
+			<property name="javax.persistence.jdbc.user" value="testdb" />
+			<property name="javax.persistence.jdbc.password" value="password" /
+			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" /
+
+		
+		</properties>
+
+	</persistence-unit>
 </persistence>

@@ -8,11 +8,13 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 /**
  * The client side for the RPC service.
  */
-@RemoteServiceRelativePath("login")
+@RemoteServiceRelativePath("loginService")
 public interface LoginService extends RemoteService {
 	/**
-	 * Ques db and returns User entity depending on username matching.
+	 * Sends a login request on the server.
+	 * @return returns null if wrong username, otherwise User entity with.
 	 */
 	User logInUser (User user);
+	User signUpUser (User user);
 	
 }

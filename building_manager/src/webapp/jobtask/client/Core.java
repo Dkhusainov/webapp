@@ -2,6 +2,12 @@ package webapp.jobtask.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.LayoutPanel;
+import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.user.client.ui.SimplePanel;
+import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 
 /**
  * Entry point of the application.
@@ -15,12 +21,26 @@ public class Core implements EntryPoint {
 	/**
 	 * This is the entry point method.  
 	 */ 
-	public void onModuleLoad() {  
+	public void onModuleLoad() { 
 
-		RootPanel rootPanel = RootPanel.get("nameFieldContainer"); 
-
+		RootPanel rootPanel = RootPanel.get();
+		rootPanel.setStyleName("rootPanel");
+		
+		VerticalPanel verticalPanel = new VerticalPanel();
+		verticalPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+		rootPanel.add(verticalPanel);
+		verticalPanel.setSize("100%", "100%");
+		
+		LayoutPanel layoutPanel = new LayoutPanel();
+		verticalPanel.add(layoutPanel);
+		layoutPanel.setHeight("87px");
+		
 		LoginComposite loginComposite = new LoginComposite();
-		rootPanel.add(loginComposite, 415, 181);
+		loginComposite.setStyleName("align");
+		verticalPanel.add(loginComposite);
 
 	}
 }
+
+
+

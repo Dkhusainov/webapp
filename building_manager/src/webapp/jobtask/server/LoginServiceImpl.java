@@ -1,6 +1,7 @@
 package webapp.jobtask.server;
 
 import webapp.jobtask.client.LoginService;
+import webapp.jobtask.server.controller.Server;
 import webapp.jobtask.shared.User;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
@@ -9,12 +10,21 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
  * @author user
  *
  */
-@SuppressWarnings("serial")
+
 public class LoginServiceImpl extends RemoteServiceServlet implements
 		LoginService {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5984251486633675500L;
+
 	public User logInUser(User user) {
-		return null;
+		return Server.getInstance().loginUser(user);
+	}
+
+	public User signUpUser(User user) {
+		return Server.getInstance().signUpUser(user);
 	} 
 
 }

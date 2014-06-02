@@ -7,22 +7,34 @@
 		}
 	</ui:style>
 
-	<g:FlowPanel styleName="{style.panel}">
-		<g:DecoratorPanel>
-			<g:VerticalPanel>
-				<g:Label text="Username"/>
-				<g:TextBox/>
-				<g:Label text="Password"/>
-				<g:PasswordTextBox width="157"/>
-				<g:LayoutPanel width="167px" height="59px">
-					<g:layer left="14px" width="63px" top="16px" height="30px">
-						<g:Button>Sign Up</g:Button>
-					</g:layer>
-					<g:layer left="83px" width="73px" top="16px" height="30px">
-						<g:Button>Log In</g:Button>
-					</g:layer>
-				</g:LayoutPanel>
-			</g:VerticalPanel>
+	<g:FlowPanel styleName="{style.panel}" ui:field="mainPanel">
+		<g:DecoratorPanel width="274px" height="339px">
+			<g:LayoutPanel width="270px" height="333px">
+				<g:layer left="23px" top="107px" height="18px" right="187px">
+					<g:Label text="Username"/>
+				</g:layer>
+				<g:layer>
+					<g:TextBox ui:field="nameField" direction="LTR" alignment="CENTER"/>
+				</g:layer>
+				<g:layer left="23px" top="171px" height="18px" right="187px">
+					<g:Label text="Password"/>
+				</g:layer>
+				<g:layer bottom="92px" height="32px" left="0.2in" width="5.8cm">
+					<g:PasswordTextBox ui:field="passwordField" direction="RTL" alignment="CENTER"/>
+				</g:layer>
+				<g:layer left="172px" top="279px" bottom="24px" right="28px">
+					<g:Button ui:field="logInButton">Log In</g:Button>
+				</g:layer>
+				<g:layer left="23px" top="279px" bottom="24px" right="177px">
+					<g:Button ui:field="signUpButton">Sign Up</g:Button>
+				</g:layer>
+				<g:layer left="23px" top="247px" bottom="68px" right="28px">
+					<g:Label text="New Label" ui:field="errorLabel" styleName="serverResponseLabelError" horizontalAlignment="ALIGN_CENTER"/>
+				</g:layer>
+				<g:layer left="23px" top="21px" bottom="294px" right="28px">
+					<g:Label text="Building manager 0.0.1-ALPHA" horizontalAlignment="ALIGN_CENTER" wordWrap="false"/>
+				</g:layer>
+			</g:LayoutPanel>
 		</g:DecoratorPanel>
 	</g:FlowPanel>
 </ui:UiBinder>

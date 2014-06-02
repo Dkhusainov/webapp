@@ -4,8 +4,10 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.Type;
 
@@ -15,10 +17,14 @@ import org.hibernate.annotations.Type;
  *
  */
 @Entity
-@Table(name = "app_user")
+@Table(name = "APP_USER")
 public class User implements Serializable {
-	private static final long serialVersionUID = 4964312034368502080L;
 
+//	@Id
+//	@GeneratedValue
+//	@Column(name = "ID")
+//	private long id;
+	
 	@Id
 	@Column(name = "NAME")
 	private String name;
@@ -29,8 +35,6 @@ public class User implements Serializable {
 	@Column(name = "BLOCKED")
 	@Type(type="true_false")
 	private boolean blocked;
-	
-	
 
 	public String getName() {
 		return name;

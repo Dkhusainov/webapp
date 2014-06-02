@@ -1,6 +1,8 @@
 package webapp.jobtask.server.dao.impl;
 
 import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,16 +21,20 @@ public class GenericDaoImpl<T, ID extends Serializable> implements GenericDao<T,
 	
 	protected  Class<T> entityClass;
 	
-	protected EntityManager entityManager;
 	
-//    public GenericDaoImpl() {
-//        ParameterizedType genericSuperclass = (ParameterizedType) getClass().getGenericSuperclass();
-//        this.entityClass = (Class<T>) genericSuperclass.getActualTypeArguments()[0];
-//    }
+	@SuppressWarnings("unchecked")
+	public GenericDaoImpl() {
+        Type t = getClass().getGenericSuperclass();
+        ParameterizedType pt = (ParameterizedType) t;
+        entityClass = (Class<T>) pt.getActualTypeArguments()[0];
+    }
 
 	public void create(T t) {
-		getEntityManager().persist(t);
-		getEntityManager().flush();
+		EntityManager em = getEntityManager();
+		em.getTransaction().begin();
+		em.persist(t);
+		em.flush();
+		em.getTransaction().commit();
 	}
 
 	public T get(ID id) {
@@ -41,12 +47,11 @@ public class GenericDaoImpl<T, ID extends Serializable> implements GenericDao<T,
 
 	@SuppressWarnings("unchecked")
 	public List<T> listAll(T item) {
-		return (LinkedList<T>) entityManager.createQuery("select x from " + getEntityClass().getSimpleName() + " x");
+		return (LinkedList<T>) getEntityManager().createQuery("select x from " + getEntityClass().getSimpleName() + " x");
 	}
 
 	public void delete(T t) {
 		getEntityManager().remove(t);
-		getEntityManager().flush();
 
 	}
 	
@@ -55,6 +60,6 @@ public class GenericDaoImpl<T, ID extends Serializable> implements GenericDao<T,
 	}
 
 	public  EntityManager getEntityManager() {
-		return entityManager;
+		return HibernateUtil.getManager();
 	}
 }

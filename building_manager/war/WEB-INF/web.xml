@@ -1,15 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
               http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-         version="2.5"
-         xmlns="http://java.sun.com/xml/ns/javaee">
+	version="2.5" xmlns="http://java.sun.com/xml/ns/javaee">
 
-  <!-- Servlets -->
-  
-  <!-- Default page to serve -->
-  <welcome-file-list>
-    <welcome-file>Building_manager.html</welcome-file>
-  </welcome-file-list>
+	<!-- Default page to serve -->
+	<welcome-file-list>
+		<welcome-file>Building_manager.html</welcome-file>
+	</welcome-file-list>
+	
+	
+	<resource-ref>
+		<description>Orace database connection</description>
+		<res-ref-name>jdbc/myds</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+
+	<!-- Servlets mapping -->
+	<servlet>
+		<servlet-name>loginServiceImpl</servlet-name>
+		<servlet-class>webapp.jobtask.server.LoginServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>loginServiceImpl</servlet-name>
+		<url-pattern>/building_manager/loginService</url-pattern>
+	</servlet-mapping>
 
 </web-app>

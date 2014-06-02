@@ -12,4 +12,7 @@ public interface LoginServiceAsync {
 
 	void logInUser(User user, AsyncCallback<User> callback);
 
+	void signUpUser(User user, AsyncCallback<User> callback);
+
+
 }

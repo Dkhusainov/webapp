@@ -31,13 +31,21 @@ public class TreeServiceImpl extends RemoteServiceServlet implements TreeService
 
 	@Override
 	public void update(CustomTreeItemDTO item) {
-		// TODO Auto-generated method stub
-		
+		Server.getInstance().getTreeItemDAO().update(item);
 	}
 
 	@Override
-	public void add(CustomTreeItemDTO item) {
-		Server.getInstance().getTreeItemDAO().create(item);
+	public CustomTreeItemDTO add(CustomTreeItemDTO item) {
+		return Server.getInstance().getTreeItemDAO().create(item);
+
 	}
+
+	@Override
+	public void delete(List<Long> list) {
+		System.out.println(list.toString());
+		Server.getInstance().getTreeItemDAO().delete(list);
+		
+	}
+
 	
 }

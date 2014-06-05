@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry including="**/*.java|**/*.xml" kind="src" path="src">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/lib/shared/appengine-local-runtime-shared.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/docs/javadoc/"/>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/lib/shared/el-api.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/docs/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/lib/shared/jsp/repackaged-appengine-ant-1.7.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/docs/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/lib/shared/jsp/repackaged-appengine-ant-launcher-1.7.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/docs/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/lib/shared/jsp/repackaged-appengine-jasper-6.0.29.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/docs/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/lib/shared/jsp/repackaged-appengine-jasper-el-6.0.29.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/docs/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/lib/shared/jsp/repackaged-appengine-tomcat-juli-6.0.29.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/docs/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/lib/shared/jsp-api.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/docs/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/lib/shared/servlet-api.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/docs/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/lib/appengine-tools-api.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/docs/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/lib/opt/user/appengine-api-labs/v1/appengine-api-labs.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/docs/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/lib/opt/user/appengine-endpoints/v1/appengine-endpoints-deps.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/docs/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/lib/opt/user/appengine-endpoints/v1/appengine-endpoints.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/docs/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/lib/opt/user/jsr107/v1/appengine-jsr107cache-1.9.5.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/docs/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/lib/opt/user/jsr107/v1/jsr107cache-1.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/docs/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/lib/user/appengine-api-1.0-sdk-1.9.5.jar" sourcepath="E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/src/user/appengine-api-1.0-sdk-1.9.5-src.zip">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/E:/Музыка/Все/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.5/appengine-java-sdk-1.9.5/docs/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/ojdbc6.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/jboss-logging-3.1.4.GA.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/jandex-1.1.0.Final.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/hibernate-jpa-2.1-api-1.0.0.Final.jar" sourcepath="C:/Users/user/.m2/repository/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final-sources.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/antlr-2.7.7.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/hibernate-entitymanager-4.3.5.Final.jar" sourcepath="C:/Users/user/.m2/repository/org/hibernate/hibernate-entitymanager/4.3.5.Final/hibernate-entitymanager-4.3.5.Final-sources.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/hibernate-core-4.3.5.Final.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/javassist-3.18.1-GA.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/hibernate-commons-annotations-4.0.4.Final.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/jboss-transaction-api_1.2_spec-1.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/jboss-logging-annotations-1.2.0.Beta1.jar"/>
+	<classpathentry kind="output" path="war/WEB-INF/classes"/>
+</classpath>

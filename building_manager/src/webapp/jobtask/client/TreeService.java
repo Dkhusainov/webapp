@@ -11,5 +11,6 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 public interface TreeService extends RemoteService {
 	List<CustomTreeItemDTO> get();
 	void update(CustomTreeItemDTO item);
-	void add(CustomTreeItemDTO item);
+	CustomTreeItemDTO add(CustomTreeItemDTO item);
+	void delete(List<Long> list);
 }

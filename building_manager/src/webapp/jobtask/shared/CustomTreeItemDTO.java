@@ -8,16 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tree")
+@Table(name = "ITEMS")
 public class CustomTreeItemDTO implements Serializable {
 	
-	public CustomTreeItemDTO(Long buildingId, String name,
-			String description) {
-		super();
-		this.buildingId = buildingId;
-		this.name = name;
-		this.description = description;
-	}
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -25,6 +18,7 @@ public class CustomTreeItemDTO implements Serializable {
 	private Long buildingId;
 	private String name;
 	private String description;
+	
 	public Long getId() {
 		return id;
 	}

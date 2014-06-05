@@ -4,13 +4,14 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
+import java.util.Map;
 
 import webapp.jobtask.shared.Building;
 import webapp.jobtask.shared.CustomTreeItemDTO;
+import webapp.jobtask.shared.TreeUtil;
 
 import com.google.gwt.cell.client.DateCell;
-import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.shared.GWT;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -32,9 +33,14 @@ import com.google.gwt.user.client.ui.DecoratorPanel;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.LayoutPanel;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.view.client.ListDataProvider;
+import com.google.gwt.view.client.SelectionChangeEvent;
+import com.google.gwt.view.client.SingleSelectionModel;
+import com.google.gwt.user.client.ui.TextArea;
+
 
 /**
  * Grid for representing list of buildings.
@@ -82,13 +88,18 @@ public class DataTableComposite extends Composite {
 	
 	List<Building> items = dataProvider.getList();
 	
+	Map<Long, CustomTree> trees;
+	
 	CellTable<Building> cellTable;
 	private TextBox textBox;
 	private CustomTree tree;
+	private ScrollPanel sp;
 
 	public DataTableComposite() {
+		
 				
 		requestUpdate();
+		buildTrees();
 		LayoutPanel verticalPanel = new LayoutPanel();
 		initWidget(verticalPanel);
 		verticalPanel.setSize("100%", "1287px");
@@ -98,6 +109,26 @@ public class DataTableComposite extends Composite {
 		cellTable.setStyleName("dataTableCSS");
 		cellTable.setVisible(true);
 		verticalPanel.add(cellTable);
+		
+		final SingleSelectionModel<Building> selectionModel = new SingleSelectionModel<Building>();
+	    cellTable.setSelectionModel(selectionModel);
+	    selectionModel.addSelectionChangeHandler(new SelectionChangeEvent.Handler() {
+	      public void onSelectionChange(SelectionChangeEvent event) {
+	        Building selected = selectionModel.getSelectedObject();
+	        if (selected != null) {
+		        	if (trees.containsKey(selected.getId())) {
+		        		tree = trees.get(selected.getId());
+		        		sp.clear();
+		        		sp.add(tree);
+		        	} else {
+		        		tree = new CustomTree(selected.getId());
+		        		tree.setWidth("202px");
+		        		sp.clear();
+		        		sp.add(tree);
+		        	}
+	        }
+	      }
+	    });
 
 		SimplePager simplePager = new SimplePager();
 		simplePager.setPageSize(10);
@@ -122,16 +153,7 @@ public class DataTableComposite extends Composite {
 		cellTable.sinkEvents(Event.ONCLICK);
 		initColumns();
 		dataProvider.addDataDisplay(cellTable);
-		
-		Button btnDelete = new Button("Delete");
-		btnDelete.addClickHandler(new ClickHandler() {
-			public void onClick(ClickEvent event) {
-				tree.getSelectedItem().remove();
-			}
-		});
-		verticalPanel.add(btnDelete);
-		verticalPanel.setWidgetLeftWidth(btnDelete, 163.0, Unit.PX, 53.0, Unit.PX);
-		verticalPanel.setWidgetTopHeight(btnDelete, 349.0, Unit.PX, 30.0, Unit.PX);
+
 		
 		Button btnCreate = new Button("Create");
 		btnCreate.addClickHandler(new ClickHandler() {
@@ -141,36 +163,47 @@ public class DataTableComposite extends Composite {
 					return;
 				}
 				Building sl = cellTable.getVisibleItem(cellTable.getKeyboardSelectedRow());
-				CustomTreeItemDTO data = new CustomTreeItemDTO(sl.getId(), textBox.getText(), "");
+				CustomTreeItemDTO data = new CustomTreeItemDTO();
+				data.setBuildingId(sl.getId());
+				data.setName(textBox.getText());
+				data.setDescription("");
 				CustomTreeItem selected = (CustomTreeItem) tree.getSelectedItem();
-				CustomTreeItem item = new CustomTreeItem(textBox.getText(), "", selected.getId());
-				
+//				
 				if (tree.getItemCount() == 0) {
 					data.setParentId((long)0);
-					tree.addItem(item);
+				} else {
+					data.setParentId(selected.getId());
 				}
-				data.setParentId(selected.getId());
-				tree.getSelectedItem().addItem(item);
-				tree.getSelectedItem().setState(true);
 				
-//				RPC call
-				 TreeServiceAsync service = (TreeServiceAsync) GWT.create(TreeServiceAsync.class); 
-				 AsyncCallback<Void> callback = new AsyncCallback<Void>() {
+				//RPC
+				 TreeServiceAsync service = (TreeServiceAsync) GWT.create(TreeService.class); 
+				 AsyncCallback<CustomTreeItemDTO> callback = new AsyncCallback<CustomTreeItemDTO>() {
 
 					@Override
 					public void onFailure(Throwable caught) {
-						Window.alert(caught.getLocalizedMessage());
+						Window.alert(caught.getMessage());
 					}
 
 					@Override
-					public void onSuccess(Void result) {
+					public void onSuccess(CustomTreeItemDTO result) {
+						try {
+							CustomTreeItem item = new CustomTreeItem(result.getName(), result.getDescription(), result.getId());
+							if (tree.getItemCount() == 0) {
+								tree.addItem(item);
+							} else {
+								tree.getSelectedItem().addItem(item);
+								tree.getSelectedItem().setState(true);
+							}
+						} catch (Exception e) {
+							Window.alert(e.getMessage() + "/n failed to add node");
+						}
 					}
 				 };
 				 service.add(data, callback);
 			}
 		});
 		verticalPanel.add(btnCreate);
-		verticalPanel.setWidgetLeftWidth(btnCreate, 0.0, Unit.PX, 48.0, Unit.PX);
+		verticalPanel.setWidgetLeftWidth(btnCreate, 10.0, Unit.PX, 48.0, Unit.PX);
 		verticalPanel.setWidgetTopHeight(btnCreate, 349.0, Unit.PX, 30.0, Unit.PX);
 		btnCreate.setWidth("48px");
 		
@@ -178,14 +211,13 @@ public class DataTableComposite extends Composite {
 		textBox.setVisibleLength(10);
 		verticalPanel.add(textBox);
 		textBox.setSize("", "");
-		verticalPanel.setWidgetLeftWidth(textBox, 50.0, Unit.PX, 107.0, Unit.PX);
+		verticalPanel.setWidgetLeftWidth(textBox, 64.0, Unit.PX, 107.0, Unit.PX);
 		verticalPanel.setWidgetTopHeight(textBox, 349.0, Unit.PX, 30.0, Unit.PX);
 		
 		
-		tree = new CustomTree();
-		tree.setWidth("202px");
+
 		DecoratorPanel decoratorPanel = new DecoratorPanel();
-		ScrollPanel sp = new ScrollPanel(tree);
+		sp = new ScrollPanel(tree);
 		sp.setAlwaysShowScrollBars(true);
 		decoratorPanel.add(sp);
 		sp.setSize("305px", "307px");
@@ -193,23 +225,58 @@ public class DataTableComposite extends Composite {
 		verticalPanel.setWidgetLeftWidth(decoratorPanel, 10.0, Unit.PX, 487.0, Unit.PX);
 		verticalPanel.setWidgetTopHeight(decoratorPanel, 385.0, Unit.PX, 454.0, Unit.PX);
 		
+		Button deleteButton = new Button("Delete");
+		deleteButton.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				List<Long> ids = TreeUtil.getChildsIds((CustomTreeItem) tree.getSelectedItem());
+				tree.getSelectedItem().removeItems();
+				tree.getSelectedItem().remove();
+				//RPC
+				 TreeServiceAsync service = (TreeServiceAsync) GWT.create(TreeService.class); 
+				 AsyncCallback<Void> callback = new AsyncCallback<Void>() {
+
+					@Override
+					public void onFailure(Throwable caught) {
+						// TODO Auto-generated method stub
+						
+					}
+
+					@Override
+					public void onSuccess(Void result) {
+						// TODO Auto-generated method stub
+						
+					}
+
+					 
+				 };
+				 service.delete(ids, callback);
+			}
+		});
+		verticalPanel.add(deleteButton);
+		verticalPanel.setWidgetLeftWidth(deleteButton, 177.0, Unit.PX, 81.0, Unit.PX);
+		verticalPanel.setWidgetTopHeight(deleteButton, 349.0, Unit.PX, 30.0, Unit.PX);
+		
 	}
 
-	List<Building> testList(int count) {
-		Random rn = new Random(12342);
-		List<Building> list = new LinkedList<Building>();
-		for (int i = 0; i < count; i++) {
-			Building b = new Building();
-			b.setArea(rn.nextInt(100));
-			b.setDate(new Date());
-			b.setFloors(rn.nextInt(10));
-			b.setGlobalId(Long.toString(rn.nextLong()));
-			b.setAddress(Long.toString(rn.nextLong()));
-			list.add(b);
-		}
-		return list;
-	}
+	private void buildTrees() {
+		//RPC
+		 TreeServiceAsync service = (TreeServiceAsync) GWT.create(TreeService.class); 
+		 AsyncCallback<List<CustomTreeItemDTO>> callback = new AsyncCallback<List<CustomTreeItemDTO>>() {
 
+			@Override
+			public void onFailure(Throwable caught) {
+				Window.alert(caught.getMessage() + "/nFailed to build trees");
+			}
+
+			@Override
+			public void onSuccess(List<CustomTreeItemDTO> result) {
+					trees = TreeUtil.getList(result);
+			}
+			 
+		 };
+		 service.get(callback);
+	}
+	
 	void requestUpdate() {
 		BuildingServiceAsync service = (BuildingServiceAsync) GWT
 				.create(BuildingService.class);
@@ -217,7 +284,6 @@ public class DataTableComposite extends Composite {
 
 			@Override
 			public void onFailure(Throwable caught) {
-				System.out.println("fail");
 			}
 
 			@Override

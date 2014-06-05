@@ -8,30 +8,30 @@
 	</ui:style>
 
 	<g:FlowPanel styleName="{style.panel}" ui:field="mainPanel">
-		<g:DecoratorPanel width="274px" height="339px">
-			<g:LayoutPanel width="270px" height="333px">
-				<g:layer left="23px" top="107px" height="18px" right="187px">
+		<g:DecoratorPanel width="270px" height="343px">
+			<g:LayoutPanel width="267px" height="335px">
+				<g:layer top="109px" height="18px" left="23px" width="167px">
 					<g:Label text="Username"/>
 				</g:layer>
-				<g:layer>
-					<g:TextBox ui:field="nameField" direction="LTR" alignment="CENTER"/>
+				<g:layer top="133px" bottom="168px" right="28px" left="23px">
+					<g:TextBox ui:field="nameField" alignment="LEFT" visibleLength="27"/>
 				</g:layer>
-				<g:layer left="23px" top="171px" height="18px" right="187px">
+				<g:layer left="23px" top="189px" height="18px" right="146px">
 					<g:Label text="Password"/>
 				</g:layer>
-				<g:layer bottom="92px" height="32px" left="0.2in" width="5.8cm">
-					<g:PasswordTextBox ui:field="passwordField" direction="RTL" alignment="CENTER"/>
+				<g:layer bottom="88px" right="28px" left="23px" top="213px">
+					<g:PasswordTextBox ui:field="passwordField" alignment="LEFT" visibleLength="30"/>
 				</g:layer>
-				<g:layer left="172px" top="279px" bottom="24px" right="28px">
+				<g:layer left="172px" width="67px" top="277px" height="34px">
 					<g:Button ui:field="logInButton">Log In</g:Button>
 				</g:layer>
 				<g:layer left="23px" top="279px" bottom="24px" right="177px">
 					<g:Button ui:field="signUpButton">Sign Up</g:Button>
 				</g:layer>
 				<g:layer left="23px" top="247px" bottom="68px" right="28px">
-					<g:Label text="New Label" ui:field="errorLabel" styleName="serverResponseLabelError" horizontalAlignment="ALIGN_CENTER"/>
+					<g:Label text="New Label" ui:field="errorLabel" styleName="serverResponseLabelError" horizontalAlignment="ALIGN_CENTER" visible="false"/>
 				</g:layer>
-				<g:layer left="23px" top="21px" bottom="294px" right="28px">
+				<g:layer left="20px" right="31px" top="29px" height="24px">
 					<g:Label text="Building manager 0.0.1-ALPHA" horizontalAlignment="ALIGN_CENTER" wordWrap="false"/>
 				</g:layer>
 			</g:LayoutPanel>

@@ -25,10 +25,28 @@ h1 {
 }
 
 .serverResponseLabelError {
-  color: red;
+	color: red;
 }
 
 /** Set ids using widget.getElement().setId("idOfElement") */
 #closeButton {
   margin: 15px 6px 6px;
+}
+.gwt-DecoratorPanel {
+	border: hidden Silver;
+}
+.rootPanel {
+margin:auto;
+}
+.align {
+	
+}
+dataTableCSS {
+	position:fixed;
+	top:1%;
+	left:1%;
+}
+.dataTableCSS {
+}
+tree {
 }

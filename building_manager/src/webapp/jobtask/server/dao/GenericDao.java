@@ -9,7 +9,7 @@ import java.util.List;
  *
  */
 public interface GenericDao<T, ID extends Serializable> {
-	void create(T t);
+	T create(T t);
 	/**
 	 * Get entity by primary key.
 	 */
@@ -20,7 +20,7 @@ public interface GenericDao<T, ID extends Serializable> {
 	 * @return
 	 */
 	T update(T t);
-	List<T> listAll(T item);
+	List<T> listAll();
 	void delete(T t);
 	
 }

@@ -8,14 +8,14 @@
 	<welcome-file-list>
 		<welcome-file>Building_manager.html</welcome-file>
 	</welcome-file-list>
-	
-	
-	<resource-ref>
-		<description>Orace database connection</description>
-		<res-ref-name>jdbc/myds</res-ref-name>
-		<res-type>javax.sql.DataSource</res-type>
-		<res-auth>Container</res-auth>
-	</resource-ref>
+
+
+<!-- 	<resource-ref> -->
+<!-- 		<description>Orace database connection</description> -->
+<!-- 		<res-ref-name>jdbc/myds</res-ref-name> -->
+<!-- 		<res-type>javax.sql.DataSource</res-type> -->
+<!-- 		<res-auth>Container</res-auth> -->
+<!-- 	</resource-ref> -->
 
 	<!-- Servlets mapping -->
 	<servlet>
@@ -27,5 +27,26 @@
 		<servlet-name>loginServiceImpl</servlet-name>
 		<url-pattern>/building_manager/loginService</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>buildingServiceImpl</servlet-name>
+		<servlet-class>webapp.jobtask.server.BuildingServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>buildingServiceImpl</servlet-name>
+		<url-pattern>/building_manager/buildingService</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>TreeService</servlet-name>
+		<servlet-class>webapp.jobtask.server.TreeServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TreeService</servlet-name>
+		<url-pattern>/building_manager/TreeService</url-pattern>
+	</servlet-mapping>
+
+
+
 
 </web-app>

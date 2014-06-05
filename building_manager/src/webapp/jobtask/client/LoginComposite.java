@@ -10,12 +10,14 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.event.dom.client.MouseUpEvent;
+import com.google.gwt.event.dom.client.KeyDownEvent;
 
 /**
  * Login widget for composition.
@@ -44,6 +46,7 @@ public class LoginComposite extends Composite {
 	 */
 	@UiHandler("logInButton")
 	void onLogInButtonClick(ClickEvent event) {
+		errorLabel.setVisible(false);
 		if (nameField.getText().length() == 0) {
 			error("Username is empty");
 			return;
@@ -70,9 +73,8 @@ public class LoginComposite extends Composite {
 
 			@Override
 			public void onSuccess(User result) {
-				
-				if (!nameField.getText().equals(result.getName())) {
-					System.out.println(nameField.getText() + result.getName());
+				System.out.println("HIadsfgfhjk");
+				if (result == null) {
 					error("Incorrect login");
 					return;
 				}
@@ -91,14 +93,15 @@ public class LoginComposite extends Composite {
 		service.logInUser(user, callback);
 	}
 	
-	@UiHandler("nameField")
-	void onNameFieldMouseUp(MouseUpEvent event) {
-		errorLabel.setVisible(false);
-	}
-	
-	@UiHandler("passwordField")
-	void onPasswordFieldMouseUp(MouseUpEvent event) {
-		errorLabel.setVisible(false);
+	private void showAccount(){
+		RootPanel panel = RootPanel.get();
+		panel.clear();
+		DataTableComposite table = new DataTableComposite();
+		HorizontalPanel hpanel = new HorizontalPanel();
+		hpanel.setHorizontalAlignment(HorizontalPanel.ALIGN_LEFT);
+		hpanel.setVerticalAlignment(HorizontalPanel.ALIGN_TOP);
+		table.setStyleName("rootPanel");
+		panel.add(table);
 	}
 	
 	private void error(String s) {
@@ -111,6 +114,7 @@ public class LoginComposite extends Composite {
 	 */
 	@UiHandler("signUpButton")
 	void onSignUpButtonClick(ClickEvent event) {
+		errorLabel.setVisible(false);
 		if (nameField.getText().length() == 0) {
 			error("Username is empty");
 			return;
@@ -146,12 +150,24 @@ public class LoginComposite extends Composite {
 		
 	}
 	
-	void showAccount(){
-		RootPanel panel = RootPanel.get();
-		panel.clear();
-		DataTableComposite table = new DataTableComposite();
-		table.setStyleName("rootPanel");
-		panel.add(table, 891, 408);
+
+	
+	@UiHandler("nameField")
+	void onNameFieldMouseUp(MouseUpEvent event) {
+		errorLabel.setVisible(false);
 	}
 	
+	@UiHandler("passwordField")
+	void onPasswordFieldMouseUp(MouseUpEvent event) {
+		errorLabel.setVisible(false);
+	}
+	
+	@UiHandler("nameField")
+	void onNameFieldKeyDown(KeyDownEvent event) {
+		errorLabel.setVisible(false);
+	}
+	@UiHandler("passwordField")
+	void onPasswordFieldKeyDown(KeyDownEvent event) {
+		errorLabel.setVisible(false);
+	}
 }

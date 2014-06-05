@@ -41,8 +41,7 @@ public class TreeUtil {
 		CustomTreeItem item = null;
 		// rec exit
 		if (data.getParentId() == 0) {
-			item = new CustomTreeItem(data.getName());
-			item.setDescription(data.getDescription());
+			item = new CustomTreeItem(data.getName(), data.getDescription(), data.getId());
 			tree.addItem(item);
 			addedItems.put(data.getId(), item);
 		}
@@ -50,16 +49,8 @@ public class TreeUtil {
 		if (!addedItems.containsKey(data.getParentId())) {
 			add(idMap.get(data.getParentId()));
 		}
-			item = new CustomTreeItem(data.getName());
-			item.setDescription(data.getDescription());
+			item = new CustomTreeItem(data.getName(), data.getDescription(), data.getId());
 			addedItems.get(data.getParentId()).addItem(item);
 			addedItems.put(data.getId(), item);
-	}
-	
-	static private Image getImageData(byte[] b){
-	      String base64 = Base64Utils.toBase64(b); 
-	      base64 = "data:image/png;base64,"+base64;
-	      Image image = new Image(base64);     
-	      return image;
 	}
 }

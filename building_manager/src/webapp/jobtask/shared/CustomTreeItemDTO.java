@@ -11,10 +11,9 @@ import javax.persistence.Table;
 @Table(name = "tree")
 public class CustomTreeItemDTO implements Serializable {
 	
-	public CustomTreeItemDTO(Long parentId, Long buildingId, String name,
+	public CustomTreeItemDTO(Long buildingId, String name,
 			String description) {
 		super();
-		this.parentId = parentId;
 		this.buildingId = buildingId;
 		this.name = name;
 		this.description = description;

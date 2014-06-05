@@ -34,5 +34,10 @@ public class TreeServiceImpl extends RemoteServiceServlet implements TreeService
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void add(CustomTreeItemDTO item) {
+		Server.getInstance().getTreeItemDAO().create(item);
+	}
 	
 }

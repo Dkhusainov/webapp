@@ -9,6 +9,7 @@
 <!-- 	     <non-jta-data-source>java:comp/env/jdbc/myds</non-jta-data-source> -->
 		<class>webapp.jobtask.shared.User</class>
 		<class>webapp.jobtask.shared.Building</class>
+		<class>webapp.jobtask.shared.CustomTreeItemDTO</class>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />

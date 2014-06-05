@@ -140,15 +140,33 @@ public class DataTableComposite extends Composite {
 					Window.alert("Name is empty");
 					return;
 				}
-				if (tree.getItemCount() == 0) {
-					tree.addTextItem(textBox.getText());
-					return;
-				}
+				Building sl = cellTable.getVisibleItem(cellTable.getKeyboardSelectedRow());
+				CustomTreeItemDTO data = new CustomTreeItemDTO(sl.getId(), textBox.getText(), "");
+				CustomTreeItem selected = (CustomTreeItem) tree.getSelectedItem();
+				CustomTreeItem item = new CustomTreeItem(textBox.getText(), "", selected.getId());
 				
-//				CustomTreeItemDTO data = new CustomTreeItemDTO();
-				tree.getSelectedItem().addTextItem(textBox.getText());
+				if (tree.getItemCount() == 0) {
+					data.setParentId((long)0);
+					tree.addItem(item);
+				}
+				data.setParentId(selected.getId());
+				tree.getSelectedItem().addItem(item);
 				tree.getSelectedItem().setState(true);
 				
+//				RPC call
+				 TreeServiceAsync service = (TreeServiceAsync) GWT.create(TreeServiceAsync.class); 
+				 AsyncCallback<Void> callback = new AsyncCallback<Void>() {
+
+					@Override
+					public void onFailure(Throwable caught) {
+						Window.alert(caught.getLocalizedMessage());
+					}
+
+					@Override
+					public void onSuccess(Void result) {
+					}
+				 };
+				 service.add(data, callback);
 			}
 		});
 		verticalPanel.add(btnCreate);
@@ -216,6 +234,7 @@ public class DataTableComposite extends Composite {
 		items.add(building);
 		dataProvider.refresh();
 	}
+	
 
 	/**
 	 * Initializes columns.

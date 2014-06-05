@@ -43,7 +43,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>TreeService</servlet-name>
-		<url-pattern>/building_manager/TreeService</url-pattern>
+		<url-pattern>/building_manager/treeService</url-pattern>
 	</servlet-mapping>
 
 
